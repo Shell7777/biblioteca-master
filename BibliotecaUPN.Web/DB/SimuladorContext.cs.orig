@@ -1,0 +1,50 @@
+﻿using SimuladorExamenUPN.DB.Maps;
+using SimuladorExamenUPN.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+
+namespace SimuladorExamenUPN.DB
+{
+    public class SimuladorContext : DbContext
+    {
+        public IDbSet<Tema> Temas { get; set; }
+        public IDbSet<Pregunta> Preguntas { get; set; }
+        public IDbSet<Alternativa> Alternativas { get; set; }
+        public IDbSet<Producto> Productos { get; set; }
+
+        public IDbSet<Viaje> Viajes { get; set; }
+
+        public IDbSet<Taxi> Taxis { get; set; }
+        public IDbSet<Categoria> Categorias { get; set; }
+
+        public IDbSet<Examen> Examenes { get; set; }
+        public IDbSet<ExamenPregunta> ExamenPreguntas { get; set; }
+
+        public SimuladorContext()
+        {
+            Database.SetInitializer<SimuladorContext>(null);
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new TemaMap());
+            modelBuilder.Configurations.Add(new PreguntaMap());
+            modelBuilder.Configurations.Add(new AlternativaMap());
+            modelBuilder.Configurations.Add(new ProductoMap());
+            modelBuilder.Configurations.Add(new ViajeMap());
+            modelBuilder.Configurations.Add(new TaxiMap());
+<<<<<<< HEAD
+            modelBuilder.Configurations.Add(new CategoriaMap());
+=======
+
+            modelBuilder.Configurations.Add(new ExamenMap());
+            modelBuilder.Configurations.Add(new ExamenPreguntaMap());
+
+>>>>>>> 05f08926a5b1bc37268b98358ba8353c6780948f
+        }
+    }
+}
